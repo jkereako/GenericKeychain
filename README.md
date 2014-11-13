@@ -1,5 +1,3 @@
-# GenericKeychain
-
 ## Description
 This sample shows how to navigate through the Keychain Services API provided by iOS. Its demonstration leverages the Generic Keychain Item class and provides a template on how to successfully set up calls  to: `SecItemAdd`, `SecItemCopyMatching`, `SecItemDelete`, and `SecItemUpdate`.
 
