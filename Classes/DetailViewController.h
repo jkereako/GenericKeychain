@@ -53,12 +53,6 @@
 @class KeychainItemWrapper;
 
 @interface DetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
-{
-    UITableView *tableView;
-    EditorController *textFieldController;
-    KeychainItemWrapper *passwordItem;
-    KeychainItemWrapper *accountNumberItem;
-}
 
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) IBOutlet EditorController *textFieldController;

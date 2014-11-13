@@ -65,8 +65,6 @@ static NSInteger kPasswordTag	= 2;	// Tag table view cells that contain a text f
 
 @implementation DetailViewController
 
-@synthesize tableView, textFieldController, passwordItem, accountNumberItem;
-
 + (NSString *)titleForSection:(NSInteger)section
 {
     switch (section)
@@ -124,8 +122,8 @@ static NSInteger kPasswordTag	= 2;	// Tag table view cells that contain a text f
     // the user clicked one of the OK/Cancel buttons
     if (buttonIndex == 0)
     {
-        [passwordItem resetKeychainItem];
-        [accountNumberItem resetKeychainItem];
+        [self.passwordItem resetKeychainItem];
+        [self.accountNumberItem resetKeychainItem];
         [self.tableView reloadData];
     }
 }
@@ -142,13 +140,13 @@ static NSInteger kPasswordTag	= 2;	// Tag table view cells that contain a text f
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
-    [tableView reloadData];
+    [self.tableView reloadData];
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
     [super setEditing:editing animated:animated];
-    [tableView reloadData];
+    [self.tableView reloadData];
 }
 
 #pragma mark -
@@ -207,7 +205,7 @@ static NSInteger kPasswordTag	= 2;	// Tag table view cells that contain a text f
 				cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kUsernameCellIdentifier];
 			}
 			
-			cell.textLabel.text = [passwordItem objectForKey:[DetailViewController secAttrForSection:indexPath.section]];
+			cell.textLabel.text = [self.passwordItem objectForKey:[DetailViewController secAttrForSection:indexPath.section]];
 			cell.accessoryType = (self.editing) ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
 			
 			break;
@@ -239,7 +237,7 @@ static NSInteger kPasswordTag	= 2;	// Tag table view cells that contain a text f
 				textField = (UITextField *) [cell.contentView viewWithTag:kPasswordTag];
 			}
 			
-			KeychainItemWrapper *wrapper = (indexPath.section == kPasswordSection) ? passwordItem : accountNumberItem;
+			KeychainItemWrapper *wrapper = (indexPath.section == kPasswordSection) ? self.passwordItem : self.accountNumberItem;
 			textField.text = [wrapper objectForKey:[DetailViewController secAttrForSection:indexPath.section]];
 			cell.accessoryType = (self.editing) ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
 						
@@ -273,22 +271,23 @@ static NSInteger kPasswordTag	= 2;	// Tag table view cells that contain a text f
 {    
 	if (indexPath.section != kShowCleartextSection)
 	{
-		[tableView deselectRowAtIndexPath:indexPath animated:YES];
+		[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 		id secAttr = [DetailViewController secAttrForSection:indexPath.section];
-		[textFieldController.textControl setPlaceholder:[DetailViewController titleForSection:indexPath.section]];
-		[textFieldController.textControl setSecureTextEntry:(indexPath.section == kPasswordSection || indexPath.section == kAccountNumberSection)];
+		[self.textFieldController.textControl setPlaceholder:[DetailViewController titleForSection:indexPath.section]];
+		[self.textFieldController.textControl setSecureTextEntry:(indexPath.section == kPasswordSection || indexPath.section == kAccountNumberSection)];
 		if (indexPath.section == kUsernameSection || indexPath.section == kPasswordSection)
 		{
-			textFieldController.keychainItemWrapper = passwordItem;
+			self.textFieldController.keychainItemWrapper = self.passwordItem;
 		}
 		else {
-			textFieldController.keychainItemWrapper = accountNumberItem;
+			self.textFieldController.keychainItemWrapper = self.accountNumberItem;
 		}
-		textFieldController.textValue = [textFieldController.keychainItemWrapper objectForKey:secAttr];
-		textFieldController.editedFieldKey = secAttr;
-		textFieldController.title = [DetailViewController titleForSection:indexPath.section];
+		self.textFieldController.textValue = [self.textFieldController.keychainItemWrapper objectForKey:secAttr];
+		self.textFieldController.editedFieldKey = secAttr;
+		self.textFieldController.title = [DetailViewController titleForSection:indexPath.section];
 		
-		[self.navigationController pushViewController:textFieldController animated:YES];
+		[self.navigationController pushViewController:self.textFieldController
+                                             animated:YES];
 	}
 }
 

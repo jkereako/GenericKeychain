@@ -54,21 +54,18 @@
 
 @implementation AppDelegate
 
-@synthesize window, navigationController, detailViewController, passwordItem, accountNumberItem;
-
-
 - (void)applicationDidFinishLaunching:(__unused UIApplication *)application
 {    
     KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"Password" accessGroup:nil];
 	self.passwordItem = wrapper;
-    detailViewController.passwordItem = wrapper;
+    self.detailViewController.passwordItem = wrapper;
     
 	wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"Account Number" accessGroup:@"YOUR_APP_ID_HERE.com.yourcompany.GenericKeychainSuite"];
     self.accountNumberItem = wrapper;
-    detailViewController.accountNumberItem = wrapper;
+    self.detailViewController.accountNumberItem = wrapper;
 
-	[window addSubview:navigationController.view];
-    [window makeKeyAndVisible];
+	[self.window addSubview:self.navigationController.view];
+    [self.window makeKeyAndVisible];
 }
 
 @end

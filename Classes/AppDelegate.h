@@ -53,13 +53,6 @@
 @class KeychainItemWrapper, DetailViewController;
 
 @interface AppDelegate : NSObject <UIApplicationDelegate>
-{
-	UIWindow *window;
-    UINavigationController *navigationController;
-    DetailViewController *detailViewController;
-    KeychainItemWrapper *passwordItem;
-    KeychainItemWrapper *accountNumberItem;
-}
 
 @property (nonatomic, strong) IBOutlet UIWindow *window;
 @property (nonatomic, strong) IBOutlet UINavigationController *navigationController;

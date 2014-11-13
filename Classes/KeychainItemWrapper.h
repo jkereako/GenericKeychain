@@ -55,12 +55,10 @@
     CF/NS container objects.
 */
 @interface KeychainItemWrapper : NSObject
-{
-    NSMutableDictionary *keychainItemData;		// The actual keychain item data backing store.
-    NSMutableDictionary *genericPasswordQuery;	// A placeholder for the generic keychain item query used to locate the item.
-}
 
+// The actual keychain item data backing store.
 @property (nonatomic, strong) NSMutableDictionary *keychainItemData;
+// A placeholder for the generic keychain item query used to locate the
 @property (nonatomic, strong) NSMutableDictionary *genericPasswordQuery;
 
 // Designated initializer.
