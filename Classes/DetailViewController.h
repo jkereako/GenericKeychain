@@ -47,17 +47,15 @@
  
 */
 
-#import <UIKit/UIkit.h>
-
 @class EditorController;
 @class KeychainItemWrapper;
 
 @interface DetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 
-@property (nonatomic, strong) IBOutlet UITableView *tableView;
-@property (nonatomic, strong) IBOutlet EditorController *textFieldController;
-@property (nonatomic, strong) KeychainItemWrapper *passwordItem;
-@property (nonatomic, strong) KeychainItemWrapper *accountNumberItem;
+@property (nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic) IBOutlet EditorController *textFieldController;
+@property (nonatomic) KeychainItemWrapper *passwordItem;
+@property (nonatomic) KeychainItemWrapper *accountNumberItem;
 
 + (NSString *)titleForSection:(NSInteger)section;
 + (id)secAttrForSection:(NSInteger)section;

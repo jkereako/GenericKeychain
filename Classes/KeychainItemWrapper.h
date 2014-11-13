@@ -47,8 +47,6 @@
  
 */
 
-#import <UIKit/UIKit.h>
-
 /*
     The KeychainItemWrapper class is an abstraction layer for the iPhone Keychain communication. It is merely a 
     simple wrapper to provide a distinct barrier between all the idiosyncracies involved with the Keychain
@@ -56,14 +54,9 @@
 */
 @interface KeychainItemWrapper : NSObject
 
-// The actual keychain item data backing store.
-@property (nonatomic, strong) NSMutableDictionary *keychainItemData;
-// A placeholder for the generic keychain item query used to locate the
-@property (nonatomic, strong) NSMutableDictionary *genericPasswordQuery;
-
 // Designated initializer.
 - (instancetype)initWithIdentifier: (NSString *)identifier accessGroup:(NSString *) accessGroup NS_DESIGNATED_INITIALIZER;
-- (void)setObject:(id)inObject forKey:(id)key;
+- (void)setObject:(id)object forKey:(id)key;
 - (id)objectForKey:(id)key;
 
 // Initializes and resets the default generic keychain item data.

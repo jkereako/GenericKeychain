@@ -65,10 +65,8 @@ static NSInteger kPasswordTag	= 2;	// Tag table view cells that contain a text f
 
 @implementation DetailViewController
 
-+ (NSString *)titleForSection:(NSInteger)section
-{
-    switch (section)
-    {
++ (NSString *)titleForSection:(NSInteger)section {
+    switch (section) {
         case kUsernameSection: return NSLocalizedString(@"Username", @"");
         case kPasswordSection: return NSLocalizedString(@"Password", @"");
         case kAccountNumberSection: return NSLocalizedString(@"Account Number", @"");
@@ -76,10 +74,8 @@ static NSInteger kPasswordTag	= 2;	// Tag table view cells that contain a text f
     return nil;
 }
 
-+ (id)secAttrForSection:(NSInteger)section
-{
-    switch (section)
-    {
++ (id)secAttrForSection:(NSInteger)section {
+    switch (section) {
         case kUsernameSection: return (__bridge id)kSecAttrAccount;
         case kPasswordSection: return (__bridge id)kSecValueData;
         case kAccountNumberSection: return (__bridge id)kSecValueData;
@@ -87,10 +83,8 @@ static NSInteger kPasswordTag	= 2;	// Tag table view cells that contain a text f
     return nil;
 }
 
-- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil])
-    {
+- (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
+    if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
         // Title displayed by the navigation controller.
         self.title = @"Keychain";
     }
@@ -103,8 +97,7 @@ static NSInteger kPasswordTag	= 2;	// Tag table view cells that contain a text f
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
 }
 
-- (void)switchAction:(id)sender
-{
+- (void)switchAction:(id)sender {
 	UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:
 							 [NSIndexPath indexPathForRow:0 inSection:kPasswordSection]];
 	UITextField *textField = (UITextField *) [cell.contentView viewWithTag:kPasswordTag];
@@ -117,8 +110,7 @@ static NSInteger kPasswordTag	= 2;	// Tag table view cells that contain a text f
 }
 
 // Action sheet delegate method.
-- (void)actionSheet:(__unused UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
-{
+- (void)actionSheet:(__unused UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
     // the user clicked one of the OK/Cancel buttons
     if (buttonIndex == 0)
     {
@@ -128,8 +120,7 @@ static NSInteger kPasswordTag	= 2;	// Tag table view cells that contain a text f
     }
 }
 
-- (IBAction)resetKeychain:(__unused id)sender
-{
+- (IBAction)resetKeychain:(__unused id)sender {
     // open a dialog with an OK and cancel button
     UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Reset Generic Keychain Item?"
             delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"OK" otherButtonTitles:nil];
@@ -137,14 +128,12 @@ static NSInteger kPasswordTag	= 2;	// Tag table view cells that contain a text f
     [actionSheet showInView:self.view];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
 }
 
-- (void)setEditing:(BOOL)editing animated:(BOOL)animated
-{
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
     [super setEditing:editing animated:animated];
     [self.tableView reloadData];
 }
@@ -152,20 +141,17 @@ static NSInteger kPasswordTag	= 2;	// Tag table view cells that contain a text f
 #pragma mark -
 #pragma mark <UITableViewDelegate, UITableViewDataSource> Methods
 
-- (NSInteger)numberOfSectionsInTableView:(__unused UITableView *)tv
-{
+- (NSInteger)numberOfSectionsInTableView:(__unused UITableView *)tv {
     // 4 sections, one for each property and one for the switch
     return 4;
 }
 
-- (NSInteger)tableView:(__unused UITableView *)tv numberOfRowsInSection:(__unused NSInteger)section
-{
+- (NSInteger)tableView:(__unused UITableView *)tv numberOfRowsInSection:(__unused NSInteger)section {
     // Only one row for each section
     return 1;
 }
 
-- (CGFloat)tableView:(__unused UITableView *)tableView heightForFooterInSection:(NSInteger)section
-{
+- (CGFloat)tableView:(__unused UITableView *)tableView heightForFooterInSection:(NSInteger)section {
 	return (section == kAccountNumberSection) ? 48.0 : 0.0;
 }
 
@@ -193,15 +179,13 @@ static NSInteger kPasswordTag	= 2;	// Tag table view cells that contain a text f
 	static NSString *kPasswordCellIdentifier =	@"PasswordCell";
 	static NSString *kSwitchCellIdentifier =	@"SwitchCell";
 	
-	UITableViewCell *cell = nil;	
-	
-	switch (indexPath.section)
-	{
-		case kUsernameSection:
-		{
+	UITableViewCell *cell;
+	UITextField *textField;
+
+	switch (indexPath.section) {
+		case kUsernameSection: {
 			cell = [aTableView dequeueReusableCellWithIdentifier:kUsernameCellIdentifier];
-			if (cell == nil)
-			{
+			if (cell == nil) {
 				cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kUsernameCellIdentifier];
 			}
 			
@@ -212,13 +196,9 @@ static NSInteger kPasswordTag	= 2;	// Tag table view cells that contain a text f
 		}
 			
 		case kPasswordSection:
-		case kAccountNumberSection:
-		{
-			UITextField *textField = nil;
-			
+		case kAccountNumberSection: {
 			cell = [aTableView dequeueReusableCellWithIdentifier:kPasswordCellIdentifier];
-			if (cell == nil)
-			{
+			if (cell == nil) {
 				cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:kPasswordCellIdentifier];
 
 				textField = [[UITextField alloc] initWithFrame:CGRectInset(cell.contentView.bounds, 10, 10)];
@@ -244,8 +224,7 @@ static NSInteger kPasswordTag	= 2;	// Tag table view cells that contain a text f
 			break;
 		}
 						
-		case kShowCleartextSection:
-		{
+		case kShowCleartextSection: {
 			cell = [aTableView dequeueReusableCellWithIdentifier:kSwitchCellIdentifier];
 			if (cell == nil)
 			{
@@ -267,10 +246,8 @@ static NSInteger kPasswordTag	= 2;	// Tag table view cells that contain a text f
 }
 
 
-- (void)tableView:(__unused UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{    
-	if (indexPath.section != kShowCleartextSection)
-	{
+- (void)tableView:(__unused UITableView *)aTableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {    
+	if (indexPath.section != kShowCleartextSection) {
 		[self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 		id secAttr = [DetailViewController secAttrForSection:indexPath.section];
 		[self.textFieldController.textControl setPlaceholder:[DetailViewController titleForSection:indexPath.section]];

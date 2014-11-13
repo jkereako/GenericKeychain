@@ -48,16 +48,8 @@
  
 */
 
-#import <UIKit/UIKit.h>
+@interface AppDelegate : NSObject
 
-@class KeychainItemWrapper, DetailViewController;
-
-@interface AppDelegate : NSObject <UIApplicationDelegate>
-
-@property (nonatomic, strong) IBOutlet UIWindow *window;
-@property (nonatomic, strong) IBOutlet UINavigationController *navigationController;
-@property (nonatomic, strong) IBOutlet DetailViewController *detailViewController;
-@property (nonatomic, strong) KeychainItemWrapper *passwordItem;
-@property (nonatomic, strong) KeychainItemWrapper *accountNumberItem;
+@property (nonatomic) IBOutlet UIWindow *window;
 
 @end

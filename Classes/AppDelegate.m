@@ -52,6 +52,17 @@
 #import "DetailViewController.h"
 #import "KeychainItemWrapper.h"
 
+@class KeychainItemWrapper, DetailViewController;
+
+@interface AppDelegate ()<UIApplicationDelegate>
+
+@property (nonatomic, strong) KeychainItemWrapper *passwordItem;
+@property (nonatomic, strong) KeychainItemWrapper *accountNumberItem;
+@property (nonatomic) IBOutlet UINavigationController *navigationController;
+@property (nonatomic) IBOutlet DetailViewController *detailViewController;
+
+@end
+
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(__unused UIApplication *)application
