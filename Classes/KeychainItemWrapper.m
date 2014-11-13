@@ -48,7 +48,7 @@
 */ 
 
 #import "KeychainItemWrapper.h"
-#import <Security/Security.h>
+@import Security;
 
 /*
 
@@ -98,32 +98,37 @@ Keychain API expects as a validly constructed container class.
     self = [super init];
 
     if (self) {
-        // Begin Keychain search setup. The genericPasswordQuery leverages the special user
-        // defined attribute kSecAttrGeneric to distinguish itself between other generic Keychain
-        // items which may be included by the same application.
-        _genericPasswordQuery = [[NSMutableDictionary alloc] init];
+        // Begin Keychain search setup. The genericPasswordQuery leverages the
+        // special user defined attribute kSecAttrGeneric to distinguish itself
+        // between other generic Keychain items which may be included by the
+        // same application.
+        _genericPasswordQuery = [NSMutableDictionary dictionary];
         
 		_genericPasswordQuery[(__bridge id)kSecClass] = (__bridge id)kSecClassGenericPassword;
         _genericPasswordQuery[(__bridge id)kSecAttrGeneric] = identifier;
 		
-		// The keychain access group attribute determines if this item can be shared
-		// amongst multiple apps whose code signing entitlements contain the same keychain access group.
+		// The keychain access group attribute determines if this item can be
+        // shared amongst multiple apps whose code signing entitlements contain
+        // the same keychain access group.
 		if (accessGroup) {
 #if TARGET_IPHONE_SIMULATOR
 			// Ignore the access group if running on the iPhone simulator.
 			// 
-			// Apps that are built for the simulator aren't signed, so there's no keychain access group
-			// for the simulator to check. This means that all apps can see all keychain items when run
-			// on the simulator.
+			// Apps that are built for the simulator aren't signed, so there's
+            // no keychain access group for the simulator to check. This means
+            // that all apps can see all keychain items when run on the
+            // simulator.
 			//
-			// If a SecItem contains an access group attribute, SecItemAdd and SecItemUpdate on the
-			// simulator will return -25243 (errSecNoAccessForItem).
+			// If a SecItem contains an access group attribute, SecItemAdd and
+            // SecItemUpdate on the simulator will return -25243
+            // (errSecNoAccessForItem).
 #else			
 			[genericPasswordQuery setObject:accessGroup forKey:(id)kSecAttrAccessGroup];
 #endif
 		}
 		
-		// Use the proper search constants, return only the attributes of the first match.
+		// Use the proper search constants, return only the attributes of the
+        // first match.
         _genericPasswordQuery[(__bridge id)kSecMatchLimit] = (__bridge id)kSecMatchLimitOne;
         _genericPasswordQuery[(__bridge id)kSecReturnAttributes] = (id)kCFBooleanTrue;
         
@@ -139,13 +144,6 @@ Keychain API expects as a validly constructed container class.
             if (accessGroup) {
 #if TARGET_IPHONE_SIMULATOR
 				// Ignore the access group if running on the iPhone simulator.
-				// 
-				// Apps that are built for the simulator aren't signed, so there's no keychain access group
-				// for the simulator to check. This means that all apps can see all keychain items when run
-				// on the simulator.
-				//
-				// If a SecItem contains an access group attribute, SecItemAdd and SecItemUpdate on the
-				// simulator will return -25243 (errSecNoAccessForItem).
 #else			
 				[_keychainItemData setObject:accessGroup
                                       forKey:(id)kSecAttrAccessGroup];
@@ -156,7 +154,6 @@ Keychain API expects as a validly constructed container class.
             // load the saved data from Keychain.
             _keychainItemData = [self secItemFormatToDictionary:outDictionary];
         }
-       
     }
     
 	return self;
@@ -181,7 +178,7 @@ Keychain API expects as a validly constructed container class.
 - (void)resetKeychainItem {
 	OSStatus junk = noErr;
     if (!self.keychainItemData) {
-        self.keychainItemData = [[NSMutableDictionary alloc] init];
+        self.keychainItemData = [NSMutableDictionary dictionary];
     }
 
     else {
@@ -200,8 +197,9 @@ Keychain API expects as a validly constructed container class.
 }
 
 - (NSMutableDictionary *)dictionaryToSecItemFormat:(NSDictionary *)dictionaryToConvert {
-    // The assumption is that this method will be called with a properly populated dictionary
-    // containing all the right key/value pairs for a SecItem.
+    // The assumption is that this method will be called with a properly
+    // populated dictionary containing all the right key/value pairs for a
+    // SecItem.
     
     // Create a dictionary to return populated with the attributes and data.
     NSMutableDictionary *returnDictionary = [NSMutableDictionary dictionaryWithDictionary:dictionaryToConvert];
@@ -209,8 +207,9 @@ Keychain API expects as a validly constructed container class.
     // Add the Generic Password keychain item class attribute.
     returnDictionary[(__bridge id)kSecClass] = (__bridge id)kSecClassGenericPassword;
     
-    // Convert the NSString to NSData to meet the requirements for the value type kSecValueData.
-	// This is where to store sensitive data that should be encrypted.
+    // Convert the NSString to NSData to meet the requirements for the value
+    // type kSecValueData. This is where to store sensitive data that should be
+    // encrypted.
     NSString *passwordString = dictionaryToConvert[(__bridge id)kSecValueData];
     returnDictionary[(__bridge id)kSecValueData] = [passwordString dataUsingEncoding:NSUTF8StringEncoding];
     
@@ -218,8 +217,9 @@ Keychain API expects as a validly constructed container class.
 }
 
 - (NSMutableDictionary *)secItemFormatToDictionary:(NSDictionary *)dictionaryToConvert {
-    // The assumption is that this method will be called with a properly populated dictionary
-    // containing all the right key/value pairs for the UI element.
+    // The assumption is that this method will be called with a properly
+    // populated dictionary containing all the right key/value pairs for the UI
+    // element.
     
     // Create a dictionary to return populated with the attributes and data.
     NSMutableDictionary *returnDictionary = [NSMutableDictionary dictionaryWithDictionary:dictionaryToConvert];
@@ -230,17 +230,20 @@ Keychain API expects as a validly constructed container class.
     
     // Acquire the password data from the attributes.
     NSData *passwordData;
+    
     if (SecItemCopyMatching((__bridge CFDictionaryRef)returnDictionary, (void *)&passwordData) == noErr) {
-        // Remove the search, class, and identifier key/value, we don't need them anymore.
+        // Remove the search, class, and identifier key/value, we don't need
+        // them anymore.
         [returnDictionary removeObjectForKey:(__bridge id)kSecReturnData];
         
         // Add the password to the dictionary, converting from NSData to NSString.
-        NSString *password = [[NSString alloc] initWithBytes:[passwordData bytes] length:[passwordData length] 
-                                                     encoding:NSUTF8StringEncoding];
+        NSString *password = [[NSString alloc] initWithBytes:passwordData.bytes
+                                                      length:passwordData.length
+                                                    encoding:NSUTF8StringEncoding];
         returnDictionary[(__bridge id)kSecValueData] = password;
     }
     else {
-        // Don't do anything if nothing is found.
+        // Do nothing if nothing is found.
         NSAssert(NO, @"Serious error, no matching item found in the keychain.\n");
     }
    
@@ -264,16 +267,6 @@ Keychain API expects as a validly constructed container class.
 		
 #if TARGET_IPHONE_SIMULATOR
 		// Remove the access group if running on the iPhone simulator.
-		// 
-		// Apps that are built for the simulator aren't signed, so there's no keychain access group
-		// for the simulator to check. This means that all apps can see all keychain items when run
-		// on the simulator.
-		//
-		// If a SecItem contains an access group attribute, SecItemAdd and SecItemUpdate on the
-		// simulator will return -25243 (errSecNoAccessForItem).
-		//
-		// The access group attribute will be included in items returned by SecItemCopyMatching,
-		// which is why we need to remove it before updating the item.
 		[tempCheck removeObjectForKey:(__bridge id)kSecAttrAccessGroup];
 #endif
         

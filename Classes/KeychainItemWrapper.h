@@ -54,12 +54,9 @@
 */
 @interface KeychainItemWrapper : NSObject
 
-// Designated initializer.
 - (instancetype)initWithIdentifier: (NSString *)identifier accessGroup:(NSString *) accessGroup NS_DESIGNATED_INITIALIZER;
 - (void)setObject:(id)object forKey:(id)key;
 - (id)objectForKey:(id)key;
-
-// Initializes and resets the default generic keychain item data.
 - (void)resetKeychainItem;
 
 @end
