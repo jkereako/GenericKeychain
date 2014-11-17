@@ -65,22 +65,19 @@
 //    return (interfaceOrientation == UIInterfaceOrientationPortrait);
 //}
 
-- (IBAction)cancel:(__unused id)sender
-{
+- (IBAction)cancel:(__unused id)sender {
     // cancel edits
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (IBAction)save:(__unused id)sender
-{
+- (IBAction)save:(__unused id)sender {
     // save edits
     [self.keychainItemWrapper setObject:[self.textControl text]
                                  forKey:self.editedFieldKey];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self.textControl becomeFirstResponder];
     [self.textControl setText:self.textValue];
