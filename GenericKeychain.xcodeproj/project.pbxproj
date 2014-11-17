@@ -7,15 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1D3623EC0D0F72F000981E51 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3623EB0D0F72F000981E51 /* CoreGraphics.framework */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
 		3076250C0DCF9C26000C2DC4 /* EditorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3076250B0DCF9C26000C2DC4 /* EditorController.m */; };
 		309905A10DF6082100331083 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3099059F0DF6082100331083 /* MainWindow.xib */; };
+		36B211B01A1A52A600BA7D43 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36B211AF1A1A52A600BA7D43 /* Images.xcassets */; };
 		36EB04401A15497900C5E6B9 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 36EB043F1A15497900C5E6B9 /* Default-568h@2x.png */; };
 		4A33F3AA0DC14C5E00DB5950 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A33F3A90DC14C5E00DB5950 /* KeychainItemWrapper.m */; };
-		4AFC07D30DC14824003666A7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AFC07D20DC14824003666A7 /* Security.framework */; };
 		4AFC08090DC148ED003666A7 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFC08010DC148ED003666A7 /* DetailViewController.m */; };
 		4AFC080A0DC148ED003666A7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFC08030DC148ED003666A7 /* AppDelegate.m */; };
 		BF063AFF11CC031A009EDACA /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BF063AFE11CC031A009EDACA /* Default.png */; };
@@ -39,29 +36,22 @@
 		BF4B93240F8ABE3600E4CD44 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AFC08030DC148ED003666A7 /* AppDelegate.m */; };
 		BF4B93250F8ABE3600E4CD44 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A33F3A90DC14C5E00DB5950 /* KeychainItemWrapper.m */; };
 		BF4B93270F8ABE3600E4CD44 /* EditorController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3076250B0DCF9C26000C2DC4 /* EditorController.m */; };
-		BF4B93290F8ABE3600E4CD44 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D30AB110D05D00D00671497 /* Foundation.framework */; };
-		BF4B932A0F8ABE3600E4CD44 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DF5F4DF0D08C38300B7A737 /* UIKit.framework */; };
-		BF4B932B0F8ABE3600E4CD44 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3623EB0D0F72F000981E51 /* CoreGraphics.framework */; };
-		BF4B932C0F8ABE3600E4CD44 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AFC07D20DC14824003666A7 /* Security.framework */; };
 		BF4B933E0F8ABF1B00E4CD44 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF4B933B0F8ABF1500E4CD44 /* Localizable.strings */; };
 		BF4B933F0F8ABF1B00E4CD44 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF4B933B0F8ABF1500E4CD44 /* Localizable.strings */; };
 		BF4B93520F8ABFA900E4CD44 /* MainWindow2.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF4B93500F8ABFA900E4CD44 /* MainWindow2.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1D30AB110D05D00D00671497 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		1D3623EB0D0F72F000981E51 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		1D6058910D05DD3D006BFB54 /* GenericKeychain.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GenericKeychain.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		1DF5F4DF0D08C38300B7A737 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3076250A0DCF9C26000C2DC4 /* EditorController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditorController.h; sourceTree = "<group>"; };
 		3076250B0DCF9C26000C2DC4 /* EditorController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditorController.m; sourceTree = "<group>"; };
 		309905A00DF6082100331083 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* GenericKeychain_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericKeychain_Prefix.pch; sourceTree = "<group>"; };
+		36B211AF1A1A52A600BA7D43 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = GenericKeychain/Images.xcassets; sourceTree = "<group>"; };
 		36EB043F1A15497900C5E6B9 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		4A33F3A80DC14C5E00DB5950 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		4A33F3A90DC14C5E00DB5950 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
-		4AFC07D20DC14824003666A7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		4AFC08010DC148ED003666A7 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		4AFC08020DC148ED003666A7 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
 		4AFC08030DC148ED003666A7 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -89,10 +79,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
-				1DF5F4E00D08C38300B7A737 /* UIKit.framework in Frameworks */,
-				1D3623EC0D0F72F000981E51 /* CoreGraphics.framework in Frameworks */,
-				4AFC07D30DC14824003666A7 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,10 +86,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BF4B93290F8ABE3600E4CD44 /* Foundation.framework in Frameworks */,
-				BF4B932A0F8ABE3600E4CD44 /* UIKit.framework in Frameworks */,
-				BF4B932B0F8ABE3600E4CD44 /* CoreGraphics.framework in Frameworks */,
-				BF4B932C0F8ABE3600E4CD44 /* Security.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -140,7 +122,6 @@
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
-				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
 			);
 			name = CustomTemplate;
@@ -158,6 +139,7 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				36B211AF1A1A52A600BA7D43 /* Images.xcassets */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				BF4B93640F8AC0D900E4CD44 /* Info2.plist */,
 				BFC6BB2F0F8A8D3A00710EDC /* KeychainAccessGroups.plist */,
@@ -171,17 +153,6 @@
 				BF0CAF9811E66FB300FBB82B /* images */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				4AFC07D20DC14824003666A7 /* Security.framework */,
-				1D3623EB0D0F72F000981E51 /* CoreGraphics.framework */,
-				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
-				1D30AB110D05D00D00671497 /* Foundation.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		BF0CAF9811E66FB300FBB82B /* images */ = {
@@ -280,6 +251,7 @@
 				BF0CAFA211E66FB300FBB82B /* Icon-Small.png in Resources */,
 				BF0CAFA311E66FB300FBB82B /* Icon-Small@2x.png in Resources */,
 				BF0CAFA411E66FB300FBB82B /* Icon.png in Resources */,
+				36B211B01A1A52A600BA7D43 /* Images.xcassets in Resources */,
 				BF0CAFA511E66FB300FBB82B /* Icon@2x.png in Resources */,
 				BF0CAFA611E66FB300FBB82B /* iTunesArtwork in Resources */,
 			);
@@ -391,6 +363,8 @@
 		1D6058940D05DD3E006BFB54 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = KeychainAccessGroups.plist;
 				COPY_PHASE_STRIP = NO;
@@ -407,6 +381,8 @@
 		1D6058950D05DD3E006BFB54 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_ENTITLEMENTS = KeychainAccessGroups.plist;
 				COPY_PHASE_STRIP = YES;
