@@ -54,12 +54,9 @@
 
 @interface EditorController : UIViewController
 
+@property (nonatomic) KeychainItemWrapper *keychainItemWrapper;
+@property (nonatomic) IBOutlet id textControl;
 @property (nonatomic) NSString *textValue;
 @property (nonatomic) NSString *editedFieldKey;
-@property (nonatomic) IBOutlet id textControl;
-@property (nonatomic) KeychainItemWrapper *keychainItemWrapper;
-
-- (IBAction)cancel:(id)sender;
-- (IBAction)save:(id)sender;
 
 @end

@@ -67,11 +67,13 @@
 
 - (void)applicationDidFinishLaunching:(__unused UIApplication *)application
 {    
-    KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"Password" accessGroup:nil];
+    KeychainItemWrapper *wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"Password"
+                                                                       accessGroup:nil];
 	self.passwordItem = wrapper;
     self.detailViewController.passwordItem = wrapper;
     
-	wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"Account Number" accessGroup:@"YOUR_APP_ID_HERE.com.yourcompany.GenericKeychainSuite"];
+	wrapper = [[KeychainItemWrapper alloc] initWithIdentifier:@"Account Number"
+                                                  accessGroup:@"YOUR_APP_ID_HERE.com.yourcompany.GenericKeychainSuite"];
     self.accountNumberItem = wrapper;
     self.detailViewController.accountNumberItem = wrapper;
 

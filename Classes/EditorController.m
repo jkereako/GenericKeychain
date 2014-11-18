@@ -51,20 +51,28 @@
 #import "EditorController.h"
 #import "KeychainItemWrapper.h"
 
+@interface EditorController ()
+
+- (IBAction)cancel:(id)sender;
+- (IBAction)save:(id)sender;
+
+@end
+
 @implementation EditorController
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     self.view.backgroundColor = [UIColor groupTableViewBackgroundColor];
-//    [self.textControl setFont:[UIFont boldSystemFontOfSize:16]];
 }
 
-//- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-//{
-//    // Return YES for supported orientations
-//    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-//}
+#pragma mark - UIViewController lifecycle
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
 
+    [self.textControl becomeFirstResponder];
+    [self.textControl setText:self.textValue];
+}
+
+#pragma mark - Interface Builder Actions
 - (IBAction)cancel:(__unused id)sender {
     // cancel edits
     [self.navigationController popViewControllerAnimated:YES];
@@ -75,12 +83,6 @@
     [self.keychainItemWrapper setObject:[self.textControl text]
                                  forKey:self.editedFieldKey];
     [self.navigationController popViewControllerAnimated:YES];
-}
-
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    [self.textControl becomeFirstResponder];
-    [self.textControl setText:self.textValue];
 }
 
 @end

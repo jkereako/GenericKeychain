@@ -52,14 +52,7 @@
 
 @interface DetailViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UIActionSheetDelegate>
 
-@property (nonatomic) IBOutlet UITableView *tableView;
-@property (nonatomic) IBOutlet EditorController *textFieldController;
 @property (nonatomic) KeychainItemWrapper *passwordItem;
 @property (nonatomic) KeychainItemWrapper *accountNumberItem;
-
-+ (NSString *)titleForSection:(NSInteger)section;
-+ (id)secAttrForSection:(NSInteger)section;
-
-- (IBAction)resetKeychain:(id)sender;
 
 @end

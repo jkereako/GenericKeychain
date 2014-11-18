@@ -63,6 +63,18 @@ enum {
 // Defined UI constants.
 static NSInteger kPasswordTag	= 2;	// Tag table view cells that contain a text field to support secure text entry.
 
+@interface DetailViewController ()
+
+@property (nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic) IBOutlet EditorController *textFieldController;
+
+- (IBAction)resetKeychain:(id)sender;
+
++ (NSString *)titleForSection:(NSInteger)section;
++ (id)secAttrForSection:(NSInteger)section;
+
+@end
+
 @implementation DetailViewController
 
 + (NSString *)titleForSection:(NSInteger)section {
