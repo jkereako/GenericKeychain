@@ -48,8 +48,6 @@
  
 */
 
-#import <UIKit/UIKit.h>
-
 @class KeychainItemWrapper;
 
 @interface EditorController : UIViewController
