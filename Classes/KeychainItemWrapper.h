@@ -52,6 +52,8 @@
     simple wrapper to provide a distinct barrier between all the idiosyncracies involved with the Keychain
     CF/NS container objects.
 */
+@import Foundation;
+
 @interface KeychainItemWrapper : NSObject
 
 - (instancetype)initWithIdentifier: (NSString *)identifier accessGroup:(NSString *) accessGroup NS_DESIGNATED_INITIALIZER;
