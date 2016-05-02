@@ -56,7 +56,7 @@
 
 @interface KeychainItemWrapper : NSObject
 
-- (instancetype)initWithIdentifier: (NSString *)identifier accessGroup:(NSString *) accessGroup NS_DESIGNATED_INITIALIZER;
+- (instancetype)initWithIdentifier: (NSString *)identifier accessGroup:(NSString *) accessGroup;
 - (void)setObject:(id)object forKey:(id)key;
 - (id)objectForKey:(id)key;
 - (void)resetKeychainItem;
